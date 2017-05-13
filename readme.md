@@ -8,14 +8,14 @@
 
 ## 前言
 
-该文件用来测试和展示书写README的各种markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为`GitHub Flavored Markdown`。简称`GFM`，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。  
-本文用MarkdownPad 2 软件进行编写，为了预览效果正常，需要先设置Tools->Markdown->Markdown Processor,选择GitHub Flavored Markdown。  
+写该文档是为了总结Git学习心得并且顺便练习markdown语法。GitHub的markdown语法在标准的markdown语法基础上做了扩充，称之为`GitHub Flavored Markdown`。简称`GFM`，GFM在GitHub上有广泛应用，除了README文件外，issues和wiki均支持markdown语法。  
+本文用MarkdownPad 2 软件进行编写，为了预览效果正常，先设置了Tools->Markdown->Markdown Processor,选择GitHub Flavored Markdown。  
 另外，锚点功能在预览时是无效的，必须在推到GitHub仓库中的文件中点击才有效果。
 
 ---
 ## 目录
-* [Git简介](#简介)
-* [安装Git](#安装)
+* [简介](#简介)
+* [安装](#安装)
 * [创建版本库](#创建版本库)
 	* 把文件添加到版本库
 * [时光机穿梭](#时光机穿梭)
@@ -267,7 +267,8 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 
 
 ----
-## 后记:
+## 后记
+
 终于写完了，自学完Git教程，以及折腾了几天Markdown之后第一次做出点有用的东西来。  
 最后提一句，**全文笔记总结自**：[廖雪峰的Git教程][source]，推荐点击学习！
 
@@ -285,4 +286,4 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 [pic-ff]:/img/ff.png
 [pic-no-ff]:/img/no-ff.png
 [pic6]:/img/6.png
-[source]:http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 "点击查看来源"
+[source]:http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000 "点击进入"
