@@ -70,8 +70,8 @@ Git可以多次add不同的文件，然后一次commit提交所有文件。
 ##### 小结:
 
 > 初始化一个仓库：**$ git init**
-添加文件到Git仓库：**$ git add \<file1> \<file2>**
-　　　　　　　　　　**$ git commit -m "XXX"**
+> 添加文件到Git仓库：**$ git add \<file1> \<file2>**
+>　　　　　　　　　　**$ git commit -m "XXX"**
 
 ----
 
@@ -94,15 +94,15 @@ Git 版本回退只是把HEAD指针指向回退到的版本:
 **//////////////////////////////////////////////////////**
 
 > `HEAD` 指向的版本为当前版本
-Git 允许在版本历史间穿梭 ： **$ git reset --hard \<commit-id>**
-穿梭前用  **$ git log (--pretty=oneline)**  来查看提交（commit）历史，确定要回到哪个版本
-重返未来，用  **$ git reflog**  查看命令历史，确定要回到未来哪个版本
+> Git 允许在版本历史间穿梭 ： **$ git reset --hard \<commit-id>**
+> 穿梭前用  **$ git log (--pretty=oneline)**  来查看提交（commit）历史，确定要回到哪个版本
+> 重返未来，用  **$ git reflog**  查看命令历史，确定要回到未来哪个版本
 
 
 ##### 工作区和暂存区
 
-**工作区**就是电脑里看到的目录,如："learngit"
-**版本库（repository)**：工作区中的隐藏目录.git
+**工作区**就是电脑里看到的目录,如："learngit"  
+**版本库（repository)**：工作区中的隐藏目录.git  
 版本库中有 **暂存区stage** 和 **分支**（master分支等）
 
 如下图，`git add` 把文件添加进 **暂存区**，`git commit` 把暂存区内容提交到当前**分支master**
@@ -112,8 +112,8 @@ Git 允许在版本历史间穿梭 ： **$ git reset --hard \<commit-id>**
 如上图，如果修改文件之后不 `add` 到暂存区，就不会加入到 `commit` 中。
 ##### 撤销修改
 > **场景1:** 改乱了工作区文件的内容，想直接丢弃工作区的修改时， 用 `$ git checkout -\<file-name>`
-**场景2：** 不但改乱了文件内容，而且添加到了暂存区，想丢弃修改时，分两步：第一步，`git reset HEAD <file-name>` 回到场景1，第二步，接着场景1操作
-**场景3:** 提交了不合适的修改到版本库，想要撤销修改时，参考 [版本回退](#版本回退)。**（前提是没有推送到远程库）**
+> **场景2：** 不但改乱了文件内容，而且添加到了暂存区，想丢弃修改时，分两步：第一步，`git reset HEAD <file-name>` 回到场景1，第二步，接着场景1操作
+> **场景3:** 提交了不合适的修改到版本库，想要撤销修改时，参考 [版本回退](#版本回退)。**（前提是没有推送到远程库）**
 
 ##### 删除文件
 ```
@@ -144,22 +144,23 @@ $ git status 会告诉你那些被删除了
 ##### 创建与合并分支
 **原理**
 
-**a. 主分支master**
-![][pic0]
+**a. 主分支master**  
+![][pic0]  
 `HEAD` 指向master，`master` 指向提交。每次提交，`master` 指针向前一步。
 
-**b. 创建新分支时**
-![][pic1]
+**b. 创建新分支时**  
+![][pic1]  
 `HEAD` 指向 `dev` ,表明当前在 `dev` 分支上。每次提交，`dev` 指针向前一步，而 `master` 不动。
 
-**c. 在dev分支上工作完成**，把dev合并到master上。合并完成后可以删除dev分支。
+**c. 在dev分支上工作完成**，把dev合并到master上。合并完成后可以删除dev分支。  
 
+小结:
 ```
 创建dev分支并切换到dev分支： $ git checkout -b dev
 查看当前分支： $ git branch
 在dev上工作完成后切换回master分支 $ git checkout master
 ```
-此时情形如图：
+此时情形如图：  
 ![][pic3]
 ```
 把dev分支的成果合并到master分支： $ git merge dev (以Fast forward模式合并)
@@ -175,21 +176,21 @@ $ git status 会告诉你那些被删除了
 > 删除分支：`git branch -d <branch-name>`
 
 ##### 解决冲突
-先在feature1分支上修改并提交，回到master分支对同一文件修改再提交，如下图：
-![][pic4]
-然后试图合并feature1分支时，可能会出现冲突，此时可以手动修改冲突并提交，改完后如下图：
-![][pic5]
+先在feature1分支上修改并提交，回到master分支对同一文件修改再提交，如下图：  
+![][pic4]  
+然后试图合并feature1分支时，可能会出现冲突，此时可以手动修改冲突并提交，改完后如下图：  
+![][pic5]  
 ##### 分支管理策略
-合并分支时，Git会尽量用Fast forward模式，这种模式删除分支后会丢掉分支信息；
+合并分支时，Git会尽量用Fast forward模式，这种模式删除分支后会丢掉分支信息；  
 强制禁用Fast forward模式，Git会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
 
-**Fast forward模式：**
+**Fast forward模式：**  
 ![][pic-ff]
 
-**禁用Fast forward模式：**
+**禁用Fast forward模式：**  
 ![][pic-no-ff]
 
->禁用Fast forward模式合并dev分支 `$ git merge --no-ff -m "XXX" dev`
+>禁用Fast forward模式合并dev分支 `$ git merge --no-ff -m "XXX" dev`  
 **(因为本次合并会创建一个新commit，所以加上 `-m` 参数，把commit描述加进去)**
 合并后可用 `$ git log` 查看分支历史
 
@@ -200,11 +201,10 @@ master 分支仅用来发布新版本，平时不能在上面工作，是稳定�
 dev 分支用于平时干活，发布新版本时，把dev分支合并到 master 上；
 每个人都在 dev 上干活，并且有自己的分支，时不时往 dev 上合并自己的分支。
 ```
-如图所示：
-![][pic6]
+如图所示：![][pic6]
 
 ##### Bug分支
-当在 **dev**分支上工作到一半，还没有办法提交，但是在 **master**分支上有bug要修复时，先把工作现场用`$ git stash` 保存一下，然后切换到 **master**分支，从**master**分支开始创建临时分支issue来修复bug，完成后切换到**master**分支进行合并，之后再切换回**dev**分支，再用`$ git stash pop` 恢复工作现场。
+当在 **dev**分支上工作到一半，还没有办法提交，但是在 **master**分支上有bug要修复时，先把工作现场用 `$ git stash` 保存一下，然后切换到 **master**分支，从**master**分支开始创建临时分支issue来修复bug，完成后切换到**master**分支进行合并，之后再切换回**dev**分支，再用 `$ git stash pop` 恢复工作现场。
 
 ```
 保存工作现场： $ git stash
@@ -240,16 +240,16 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 小结：
 
 > 查看远程库信息： `$ git remote -v` ;
-本地新建的分支不推送到远程，对其他人就是不可见的;
-推送分支： `$ git push origin <branch-name>` ;(若推送失败，要先 `$ git pull` 抓取远程的新提交；
-在本地创建与远程分支对应的分支： `$ git checkout -b <branch-name> origin/<branch-name>` ;
-建立本地分支与远程分支的链接： `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 。
+> 本地新建的分支不推送到远程，对其他人就是不可见的;
+> 推送分支： `$ git push origin <branch-name>` ; ***(若推送失败，要先 `$ git pull` 抓取远程的新提交)***
+> 在本地创建与远程分支对应的分支： `$ git checkout -b <branch-name> origin/<branch-name>` ;
+> 建立本地分支与远程分支的链接： `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 。
 
 ### 标签管理
 **标签（tag）**，就是一个容易记住的名字，对应某个**commit**。
 ##### 创建标签
 ```
-为指定commit打标签： $ git tag <tag-name> <commit-id>     // 不加commit-id默认为最近一次提交打标签
+为指定commit打标签： $ git tag <tag-name> <commit-id>     // 不加 commit-id 默认为最近一次提交打标签
 创建带有说明的标签：$ git tag -a <tag-name> -m "XXX" <commit-id>
 查看所有标签： $ git tag
 查看某标签信息： $ git show <tag-name>
@@ -267,7 +267,7 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 
 ----
 ## 后记:
-终于写完了，自学完Git教程，以及折腾了几天Markdown之后第一次做出点有用的东西来。
+终于写完了，自学完Git教程，以及折腾了几天Markdown之后第一次做出点有用的东西来。  
 最后提一句，**全文笔记总结自**：[廖雪峰的Git教程][source]，推荐点击学习！
 
 -----
