@@ -93,8 +93,8 @@ Git 版本回退只是把HEAD指针指向回退到的版本:
 **//////////////////////////////////////////////////////**
 
 > `HEAD` 指向的版本为当前版本
-> Git 允许在版本历史间穿梭 ： **$ git reset --hard \<commit-id>**
-> 穿梭前用  **$ git log (--pretty=oneline)**  来查看提交（commit）历史，确定要回到哪个版本
+> Git 允许在版本历史间穿梭 ： **$ git reset --hard \<commit-id>**  
+> 穿梭前用  **$ git log (--pretty=oneline)**  来查看提交（commit）历史，确定要回到哪个版本  
 > 重返未来，用  **$ git reflog**  查看命令历史，确定要回到未来哪个版本
 
 
@@ -226,12 +226,12 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 
 >抓取分支：
 >>多人协作时，大家都会往**dev**分支上提交自己的修改
->>从远程库克隆时，默认只能看到**master**分支，要在**dev**分支上开发，必须创建远程**origin**的**dev**分支到本地：`$ git checkout -b dev origin/dev` ,然后就可以在**dev**上修改并把dev分支push到远程。
->>之后，另一个人也修改了同一文件，并试图推送，就会失败，Git提示要先 `$ git pull` 把最新提交从 **origin/dev** 上抓取下来。
-***(git pull失败的话，就根据提示设置dev与origin/dev的链接，然后再 git pull)***
+>>从远程库克隆时，默认只能看到**master**分支，要在**dev**分支上开发，必须创建远程**origin**的**dev**分支到本地：`$ git checkout -b dev origin/dev` ,然后就可以在**dev**上修改并把dev分支push到远程。  
+>>之后，另一个人也修改了同一文件，并试图推送，就会失败，Git提示要先 `$ git pull` 把最新提交从 **origin/dev** 上抓取下来。  
+***(git pull失败的话，就根据提示设置dev与origin/dev的链接，然后再 git pull)***  
 因此，**多人协作的工作模式**通常是这样：
->>> 首先尝试 `$ git push origin <branch-name>` 推送自己的修改；
->>> 推送失败，则是因为远程库比本地更新，先用 `$ git pull` 抓取最新版本，再试图合并；
+>>> 首先尝试 `$ git push origin <branch-name>` 推送自己的修改；  
+>>> 推送失败，则是因为远程库比本地更新，先用 `$ git pull` 抓取最新版本，再试图合并；  
 >>> 有冲突则解决后再次推送。
 
 ***（若 `$ git pull` 提示"no tracking information"，说明没有建立分支链接关系，用 `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 建立链接。）***
