@@ -110,8 +110,8 @@ Git 版本回退只是把HEAD指针指向回退到的版本:
 #### 管理修改
 如上图，如果修改文件之后不 `add` 到暂存区，就不会加入到 `commit` 中。
 #### 撤销修改
-> **场景1:** 改乱了工作区文件的内容，想直接丢弃工作区的修改时， 用 `$ git checkout -\<file-name>`　　
-> **场景2：** 不但改乱了文件内容，而且添加到了暂存区，想丢弃修改时，分两步：第一步，`git reset HEAD <file-name>` 回到场景1，第二步，接着场景1操作　　
+> **场景1:** 改乱了工作区文件的内容，想直接丢弃工作区的修改时， 用 `$ git checkout -\<file-name>`  
+> **场景2：** 不但改乱了文件内容，而且添加到了暂存区，想丢弃修改时，分两步：第一步，`git reset HEAD <file-name>` 回到场景1，第二步，接着场景1操作  
 > **场景3:** 提交了不合适的修改到版本库，想要撤销修改时，参考 [版本回退](#版本回退)。**（前提是没有推送到远程库）**
 
 #### 删除文件
@@ -167,12 +167,12 @@ $ git status 会告诉你那些被删除了
 ```
 小结：
 
-> 查看分支： `$ git branch`
-> 创建分支： `$ git branch <branch-name>`
-> 切换分支：`$ git checkout <branch-name>`
-> 创建并切换分支：`$ git checkout -b <branch-name>`
-> 合并某分支到当前分支：`$ git merge <branch-name>`
-> 删除分支：`git branch -d <branch-name>`
+> 查看分支： `$ git branch`  
+> 创建分支： `$ git branch <branch-name>`  
+> 切换分支：`$ git checkout <branch-name>`  
+> 创建并切换分支：`$ git checkout -b <branch-name>`  
+> 合并某分支到当前分支：`$ git merge <branch-name>`  
+> 删除分支：`git branch -d <branch-name>`  
 
 #### 解决冲突
 先在feature1分支上修改并提交，回到master分支对同一文件修改再提交，如下图：  
@@ -238,11 +238,11 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 
 小结：
 
-> 查看远程库信息： `$ git remote -v` ;
-> 本地新建的分支不推送到远程，对其他人就是不可见的;
-> 推送分支： `$ git push origin <branch-name>` ; ***(若推送失败，要先 `$ git pull` 抓取远程的新提交)***
-> 在本地创建与远程分支对应的分支： `$ git checkout -b <branch-name> origin/<branch-name>` ;
-> 建立本地分支与远程分支的链接： `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 。
+> 查看远程库信息： `$ git remote -v` ;  
+> 本地新建的分支不推送到远程，对其他人就是不可见的;  
+> 推送分支： `$ git push origin <branch-name>` ; ***(若推送失败，要先 `$ git pull` 抓取远程的新提交)***  
+> 在本地创建与远程分支对应的分支： `$ git checkout -b <branch-name> origin/<branch-name>` ;  
+> 建立本地分支与远程分支的链接： `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 。  
 
 ### 标签管理
 **标签（tag）**，就是一个容易记住的名字，对应某个**commit**。
