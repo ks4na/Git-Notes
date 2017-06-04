@@ -246,6 +246,7 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 > 在本地创建与远程分支对应的分支： `$ git checkout -b <branch-name> origin/<branch-name>` ;  
 > 建立本地分支与远程分支的链接： `$ git branch --set-upstream-to origin/<branch-name> <branch-name>` 。  
 
+---
 ### 标签管理
 **标签（tag）**，就是一个容易记住的名字，对应某个**commit**。
 #### 创建标签
