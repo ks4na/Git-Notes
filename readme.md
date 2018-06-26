@@ -227,6 +227,7 @@ dev 分支用于平时干活，发布新版本时，把dev分支合并到 master
 >抓取分支：
 >>多人协作时，大家都会往**dev**分支上提交自己的修改
 >>从远程库克隆时，默认只能看到**master**分支，要在**dev**分支上开发，必须创建远程**origin**的**dev**分支到本地：`$ git checkout -b dev origin/dev` ,然后就可以在**dev**上修改并把dev分支push到远程。 
+>>>clone的项目查看所有分支 `git branch -a`    查看远程分支 `git branch -r`
 > 
 >>之后，另一个人也修改了同一文件，并试图推送，就会失败，Git提示要先 `$ git pull` 把最新提交从 **origin/dev** 上抓取下来。  
 >> ***(git pull失败的话，就根据提示设置dev与origin/dev的链接，然后再 git pull)*** 
